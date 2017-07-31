@@ -26,4 +26,9 @@ Salty Docker Examples:
 
 ..code-block::bash
 
-    test
+    Comment:
+        Docker swarm has been Initalized on tjones-Salt-Master and the worker/manager Join token is below
+    Manger_Token:
+        SWMTKN-1-1yv40emizau5b1hy2x3boj3vcsy7edoldjxooif13kx9jpv97e-4jakordba7mvirp0a8vw4ib7v
+    Worker_Token:
+        SWMTKN-1-1yv40emizau5b1hy2x3boj3vcsy7edoldjxooif13kx9jpv97e-ec78dxpr06sfhplqr05nncihn
