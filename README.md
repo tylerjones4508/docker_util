@@ -24,10 +24,11 @@ docker-sdk can be installed via pip and it is required to work with **Salt Stack
 
 ## Docker Swarm Salt Module
 
-**Docker Swarm Init**
+
 
 ### The following will create a docker swarm manager
 
+**Docker Swarm Init**
 
 ..code-block::bash
 
@@ -44,9 +45,11 @@ docker-sdk can be installed via pip and it is required to work with **Salt Stack
         SWMTKN-1-1yv40emizau5b1hy2x3boj3vcsy7edoldjxooif13kx9jpv97e-ec78dxpr06sfhplqr05nncihn
 
 
-**Join a Swarm as a worker or manager.**
+
 
 ### The following will join a minion to a Docker Swarm
+
+**Join a Swarm as a worker or manager.**
 
 **Note** You have to pass in the token
 
