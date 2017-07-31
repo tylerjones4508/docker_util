@@ -2,7 +2,7 @@ Salty Docker
 ------------
 ..versionadded: 2017.7.14
 
-The Salty Docker module allows you to manage Docker swarm clusters via Salt Stack
+The Salty Docker module allows you to manage Docker swarm clusters via **Salt Stack**
 
 :codeauthor Tyler Jones <tylerjones4508@gmail.com>
 
@@ -10,7 +10,7 @@ The Salty Docker module allows you to manage Docker swarm clusters via Salt Stac
 About
 -----
 
-This is designed to be used with *Salt Stack* modules. Salt State modules will follow at a later date.
+This is designed to be used with **Salt Stack** modules. Salt State modules will follow at a later date.
 
 REQUIREMENTS:
 ------------
