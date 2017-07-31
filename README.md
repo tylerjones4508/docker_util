@@ -17,7 +17,11 @@ docker-sdk can be installed via pip:
 Salty Docker Examples:
 ----------------------
 
-#docker swarm init
+Docker Swarm Init
+-----------------
+
+The following will create a docker swarm manager
+
 
 ..code-block::bash
 
