@@ -22,8 +22,9 @@ docker-sdk can be installed via pip:
     pip install docker
 
 
-Docker Swarm Init
------------------
+Docker Swarm Salt Module
+------------------------
+**Docker Swarm Init**
 
 The following will create a docker swarm manager
 
