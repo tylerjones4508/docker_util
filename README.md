@@ -23,7 +23,10 @@ Salty Docker Examples:
 
     salt minion salty_docker.swarm_init advertise_addr='ens4' listen_addr='0.0.0.0' force_new_cluster=False
 
-    Salt-Master:
+
+..code-block::bash
+
+   Salt-Master:
     |_
       ----------
       Comment:
