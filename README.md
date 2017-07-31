@@ -13,6 +13,7 @@ About
 This is designed to be used with *Salt Stack* modules. Salt State modules will follow at a later date.
 
 REQUIREMENTS:
+------------
 
 docker-sdk can be installed via pip:
 
