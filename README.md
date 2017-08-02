@@ -17,9 +17,8 @@ This is designed to be used with **Salt Stack** modules. Salt State modules will
 
 docker-sdk can be installed via pip and it is required to work with **Salt Stack**:
 
-..code-block::bash
 
-    pip install docker
+``pip install docker``
 
 
 ## Docker Swarm Salt Module
