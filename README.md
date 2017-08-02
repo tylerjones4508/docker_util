@@ -31,7 +31,7 @@ docker-sdk can be installed via pip and it is required to work with **Salt Stack
 
 
 
-    salt minion salty_docker.swarm_init advertise_addr='ens4' listen_addr='0.0.0.0' force_new_cluster=False
+``salt minion salty_docker.swarm_init advertise_addr='ens4' listen_addr='0.0.0.0' force_new_cluster=False``
 
 
 
