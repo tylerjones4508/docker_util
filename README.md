@@ -54,12 +54,13 @@ docker-sdk can be installed via pip and it is required to work with **Salt Stack
 
 
 
-    salt minion salty_docker.joinswarm 10.1.0.2 0.0.0.0 SWMTKN-1-1yv40emizau5b1hy2x3boj3vcsy7edoldjxooif13kx9jpv97e-ec78dxpr06sfhplqr05nncihn
+``salt minion salty_docker.joinswarm 10.1.0.2 0.0.0.0 SWMTKN-1-1yv40emizau5b1hy2x3boj3vcsy7edoldjxooif13kx9jpv97e-ec78dxpr06sfhplqr05nncihn``
 
 
 
-
-     Comment:
-          instance-1-minion.c.optimum-tensor-161912.internal has joined the Swarm
-     Worker/ManagerIP:
-          10.1.0.3
+```
+Comment:
+   instance-1-minion.c.optimum-tensor-161912.internal has joined the Swarm
+Worker/ManagerIP:
+   10.1.0.3
+```
