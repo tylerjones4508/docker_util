@@ -7,3 +7,24 @@ __opts__ = salt.config.minion_config('/etc/salt/minion')
 __grains__ = salt.loader.grains(__opts__)
 client = docker.from_env()
 server_name = __grains__['id']
+
+
+
+def service_create(image):
+    client.services.create(image,command='bash')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+service_create('nginx')
