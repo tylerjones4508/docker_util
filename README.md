@@ -8,7 +8,7 @@ The Docker Util module allows you to manage Docker swarm clusters via [SaltStack
 
 ## About
 
-This is designed to be used with [SaltStack](https://github.com/saltstack/salt) modules. For more information about how to configure your custom Salt modules visit [This     Link](https://docs.saltstack.com/en/latest/ref/modules/#writing-execution-modules). [SaltStack](https://github.com/saltstack/salt) State modules will follow at a later date.
+This is designed to be used with [SaltStack](https://github.com/saltstack/salt) modules. For more information about how to configure your custom Salt modules visit [This     Link](https://docs.saltstack.com/en/latest/ref/modules/#writing-execution-modules). The [SaltStack](https://github.com/saltstack/salt) State modules will follow at a later date.
 
 ## REQUIREMENTS:
 
@@ -63,4 +63,4 @@ Worker/ManagerIP:
 
 ## Docker Services Salt Module
 
-###Create a service for Docker Swarm
+### Create a service for Docker Swarm
