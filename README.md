@@ -96,7 +96,7 @@ salt <target> docker_util.service_create image='httpd' name='Test_Service' comma
 **Return Data**
 
 ```yaml
-tjones-Salt-Master:
+Salt-Master:
     |_
       ----------
       Command:
@@ -106,9 +106,9 @@ tjones-Salt-Master:
       Image:
           httpd
       Info:
-          tjones-Salt-Master has a Docker Swarm Service running named Test_Service
+          Salt-Master has a Docker Swarm Service running named Test_Service
       Minion:
-          tjones-Salt-Master
+          Salt-Master
       Name:
           Test_Service
       Published_Port:
