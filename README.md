@@ -23,7 +23,7 @@ pip install -U docker
 
 ### The following will create a Docker Swarm Manager
 
-###docker_util.swarm_init(advertise_addr=str,listen_addr=int, force_new_cluster=bool )
+##### docker_util.swarm_init(advertise_addr=str,listen_addr=int, force_new_cluster=bool )
 
 
 ```bash
@@ -45,7 +45,7 @@ Worker_Token:
 
 **Join a Swarm as a worker or manager.**
 
-###docker_util.joinswarm(remote_addr, listen_addr, token)
+##### docker_util.joinswarm(remote_addr, listen_addr, token)
 
 **Note** You have to pass in the token
 
@@ -62,18 +62,18 @@ Worker/ManagerIP:
    10.1.0.3
 ```
 
-#### The following will leave a Docker Swarm
+### The following will leave a Docker Swarm
 
 
 
-###docker_util.leave_swarm(force=bool)
+##### docker_util.leave_swarm(force=bool)
 
 
 
 
 ## Docker Services Salt Module
 
-### docker_util.service_create(image=str,name=str,command=str,hostname=str,replicas=int,target_port=int,published_port=int)
+##### docker_util.service_create(image=str,name=str,command=str,hostname=str,replicas=int,target_port=int,published_port=int)
 
 
 
