@@ -24,17 +24,11 @@ Docker Python [Libary](https://pypi.python.org/pypi/docker/) can be installed vi
 ```bash
 pip install -U docker
 ```
-
-
-
-
-
 ## Docker Swarm Salt Module
 
 ### The following will create a Docker Swarm Manager
 
 ##### docker_util.swarm_init(advertise_addr=str,listen_addr=int, force_new_cluster=True/False )
-
 
 ```bash
 salt <target> docker_util.swarm_init advertise_addr='ens4' listen_addr='0.0.0.0' force_new_cluster=False
@@ -50,8 +44,6 @@ Manger_Token:
 Worker_Token:
     SWMTKN-1-1yv40emizau5b1hy2x3boj3vcsy7edoldjxooif13kx9jpv97e-ec78dxpr06sfhplqr05nncihn
 ```
-
-
 
 ### The following will join a minion to a Docker Swarm
 
@@ -107,7 +99,6 @@ salt <target> docker_util.service_create image='httpd' name='Test_Service' comma
 
 ```
 
-
 **Return Data**
 
 ```yaml
@@ -134,7 +125,7 @@ Salt-Master:
           80
 ```
 
-If I run `docker service ls` on the command line you will see the service running with 6 replicas.
+If we run `docker service ls` on the command line you will see the service running with 6 replicas.
 
 ```bash
 ID                  NAME                MODE                REPLICAS            IMAGE               PORTS
