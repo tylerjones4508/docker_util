@@ -23,7 +23,7 @@ pip install -U docker
 
 ### The following will create a Docker Swarm Manager
 
-##### docker_util.swarm_init(advertise_addr=str,listen_addr=int, force_new_cluster=bool )
+##### docker_util.swarm_init(advertise_addr=str,listen_addr=int, force_new_cluster=True/False )
 
 
 ```bash
@@ -66,7 +66,7 @@ Worker/ManagerIP:
 
 
 
-##### docker_util.leave_swarm(force=bool)
+##### docker_util.leave_swarm(force=True/False)
 
 
 
