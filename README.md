@@ -9,8 +9,7 @@ The Salty Docker module allows you to manage Docker swarm clusters via **Salt St
 
 ## About
 
-
-This is designed to be used with **Salt Stack** modules. Salt State modules will follow at a later date.
+This is designed to be used with [SaltStack](https://github.com/saltstack/salt) modules. Salt State modules will follow at a later date.
 
 ## REQUIREMENTS:
 
@@ -23,9 +22,7 @@ pip install -U docker
 
 ## Docker Swarm Salt Module
 
-
-
-### The following will create a docker swarm manager
+### The following will create a Docker Swarm Manager
 
 **Docker Swarm Init**
 
