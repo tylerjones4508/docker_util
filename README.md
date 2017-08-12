@@ -15,7 +15,7 @@ This is designed to be used with [SaltStack](https://github.com/saltstack/salt) 
 
 docker-sdk can be installed via pip and it is required to work with [SaltStack](https://github.com/saltstack/salt):
 
-```
+```bash
 pip install -U docker
 ```
 
@@ -27,7 +27,7 @@ pip install -U docker
 
 
 ```bash
-salt minion docker_util.swarm_init advertise_addr='ens4' listen_addr='0.0.0.0' force_new_cluster=False
+salt <target> docker_util.swarm_init advertise_addr='ens4' listen_addr='0.0.0.0' force_new_cluster=False
 ```
 
 ```yaml
@@ -49,7 +49,7 @@ Worker_Token:
 
 
 ```bash
-salt minion docker_util.joinswarm 10.1.0.2 0.0.0.0 SWMTKN-1-1yv40emizau5b1hy2x3boj3vcsy7edoldjxooif13kx9jpv97e-ec78dxpr06sfhplqr05nncihn
+salt <target> docker_util.joinswarm 10.1.0.2 0.0.0.0 SWMTKN-1-1yv40emizau5b1hy2x3boj3vcsy7edoldjxooif13kx9jpv97e-ec78dxpr06sfhplqr05nncihn
 ```
 
 
@@ -64,4 +64,10 @@ Worker/ManagerIP:
 
 ### Create a service for Docker Swarm
 
+###### docker_util.###joinswarm
+
+
+
 **Note: You have to have a swarm running for this to work**
+
+Here we are going to create a docker service with salt on the targeted minion.
