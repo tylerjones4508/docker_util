@@ -26,11 +26,11 @@ pip install -U docker
 **Docker Swarm Init**
 
 
-```yaml
+```bash
 salt minion docker_util.swarm_init advertise_addr='ens4' listen_addr='0.0.0.0' force_new_cluster=False
 ```
 
-```
+```yaml
 Comment:
     Docker swarm has been Initalized on Salt-Master and the worker/manager Join token is below
 Manger_Token:
@@ -53,7 +53,7 @@ salt minion docker_util.joinswarm 10.1.0.2 0.0.0.0 SWMTKN-1-1yv40emizau5b1hy2x3b
 ```
 
 
-```json
+```yaml
 Comment:
    instance-1-minion.c.optimum-tensor-161912.internal has joined the Swarm
 Worker/ManagerIP:
