@@ -12,12 +12,22 @@ This is designed to be used with [SaltStack](https://github.com/saltstack/salt) 
 
 ## REQUIREMENTS:
 
+### SaltStack
 
-docker-sdk can be installed via pip and it is required to work with [SaltStack](https://github.com/saltstack/salt):
+To install [SaltStack](https://github.com/saltstack/salt) please visit https://repo.saltstack.com/.
+
+
+### Docker Python Library
+
+Docker Python [Libary](https://pypi.python.org/pypi/docker/) can be installed via pip and it is required to work with [SaltStack](https://github.com/saltstack/salt):
 
 ```bash
 pip install -U docker
 ```
+
+
+
+
 
 ## Docker Swarm Salt Module
 
