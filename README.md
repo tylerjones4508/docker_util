@@ -79,4 +79,39 @@ Worker/ManagerIP:
 
 **Note: You have to have a swarm running for this to work**
 
-Here we are going to create a docker service with salt on the targeted minion.
+Here we are going to create a docker service with salt on the targeted minion. We if your minion is a worker this will not work, the minion will need to have a manager status and not a worker.
+Below is targeting a the Salt-Master itself because that is my manager node.
+
+
+```bash
+
+salt <target> docker_util.service_create image='httpd' name='Test_Service' command=None hostname='apache' replicas=6 target_port=80 published_port=80
+
+```
+
+
+**Return Data**
+
+```yaml
+tjones-Salt-Master:
+    |_
+      ----------
+      Command:
+          None
+      Hostname:
+          apache
+      Image:
+          httpd
+      Info:
+          tjones-Salt-Master has a Docker Swarm Service running named Test_Service
+      Minion:
+          tjones-Salt-Master
+      Name:
+          Test_Service
+      Published_Port:
+          80
+      Replicas:
+          6
+      Target_Port:
+          80
+```
