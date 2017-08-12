@@ -1,15 +1,14 @@
-# Salty Docker
+# Docker Util
 
 [SaltStack](https://github.com/saltstack/salt) Version 2017.7.14
 
-The Salty Docker module allows you to manage Docker swarm clusters via [SaltStack](https://github.com/saltstack/salt)
+The Docker Util module allows you to manage Docker swarm clusters via [SaltStack](https://github.com/saltstack/salt)
 
 **CodeAuthor** Tyler Jones <tylerjones4508@gmail.com>
 
-
 ## About
 
-This is designed to be used with [SaltStack](https://github.com/saltstack/salt) modules. [SaltStack](https://github.com/saltstack/salt) State modules will follow at a later date.
+This is designed to be used with [SaltStack](https://github.com/saltstack/salt) modules. For more information about how to configure your custom Salt modules visit [This     Link](https://docs.saltstack.com/en/latest/ref/modules/#writing-execution-modules). [SaltStack](https://github.com/saltstack/salt) State modules will follow at a later date.
 
 ## REQUIREMENTS:
 
@@ -61,3 +60,7 @@ Comment:
 Worker/ManagerIP:
    10.1.0.3
 ```
+
+## Docker Services Salt Module
+
+###Create a service for Docker Swarm
