@@ -30,6 +30,8 @@ pip install -U docker
 salt <target> docker_util.swarm_init advertise_addr='ens4' listen_addr='0.0.0.0' force_new_cluster=False
 ```
 
+**Return Data**
+
 ```yaml
 Comment:
     Docker swarm has been Initalized on Salt-Master and the worker/manager Join token is below
@@ -54,6 +56,7 @@ Worker_Token:
 salt <target> docker_util.joinswarm 10.1.0.2 0.0.0.0 SWMTKN-1-1yv40emizau5b1hy2x3boj3vcsy7edoldjxooif13kx9jpv97e-ec78dxpr06sfhplqr05nncihn
 ```
 
+**Return Data**
 
 ```yaml
 Comment:
