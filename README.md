@@ -67,9 +67,13 @@ Worker/ManagerIP:
 
 ### The following will leave a Docker Swarm
 
-
-
 ##### docker_util.leave_swarm(force=True/False)
+
+
+
+
+
+
 
 
 
@@ -117,4 +121,24 @@ Salt-Master:
           6
       Target_Port:
           80
+```
+
+If I run `docker service ls` on the command line you will see the service running with 6 replicas.
+
+```bash
+ID                  NAME                MODE                REPLICAS            IMAGE               PORTS
+pz4nz5j8suo2        Test_Service        replicated          6/6                 httpd               *:80->80/tcp
+
+```
+Here is the service spread out accross the master and minion servers.
+
+```bash
+root@Salt-Master:~# docker service ps Test_Service
+ID                  NAME                IMAGE               NODE                DESIRED STATE       CURRENT STATE           ERROR               PORTS
+pb4g28xmr4z5        Test_Service.1      httpd               tjones-master       Running             Running 8 minutes ago
+mesn2l97veul        Test_Service.2      httpd               instance-1-minion   Running             Running 8 minutes ago
+qcp36x0mqumq        Test_Service.3      httpd               tjones-master       Running             Running 8 minutes ago
+szc2knyx59d2        Test_Service.4      httpd               instance-1-minion   Running             Running 8 minutes ago
+uosngu752xbr        Test_Service.5      httpd               tjones-master       Running             Running 8 minutes ago
+0kzzadygz4mh        Test_Service.6      httpd               instance-1-minion   Running             Running 8 minutes ago
 ```
