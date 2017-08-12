@@ -30,9 +30,9 @@ pip install -U docker
 **Docker Swarm Init**
 
 
-
-``salt minion docker_util.swarm_init advertise_addr='ens4' listen_addr='0.0.0.0' force_new_cluster=False``
-
+```
+salt minion docker_util.swarm_init advertise_addr='ens4' listen_addr='0.0.0.0' force_new_cluster=False
+```
 
 
 
