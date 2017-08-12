@@ -54,7 +54,7 @@ salt minion docker_util.joinswarm 10.1.0.2 0.0.0.0 SWMTKN-1-1yv40emizau5b1hy2x3b
 ```
 
 
-```
+```yaml
 Comment:
    instance-1-minion.c.optimum-tensor-161912.internal has joined the Swarm
 Worker/ManagerIP:
@@ -64,3 +64,5 @@ Worker/ManagerIP:
 ## Docker Services Salt Module
 
 ### Create a service for Docker Swarm
+
+**Note: You have to have a swarm running for this to work**
