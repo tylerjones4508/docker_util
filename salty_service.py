@@ -16,9 +16,8 @@ def service_create(image=str,name=str,command=str,hostname=str,replicas=int,targ
     replica_mode = docker.types.ServiceMode('replicated', replicas=replicas)
     ports = docker.types.EndpointSpec(ports={ target_port: published_port })
     client.services.create(name=name, image=image, command=command,mode=replica_mode,endpoint_spec=ports)
-    echoback = server_name + ' has a docker service running named ' + name
-    d.append({'Info': echoback,'Minion': server_name 'Name': name, 'Image': image, 'Command': command, 'Hostname': hostname, 'Replicas': replicas, 'Target_Port': target_port, 'Published_Port': published_port})
+    echoback = server_name + ' has a Docker Swarm Service running named ' + name
+    d.append({'Info': echoback, 'Minion': server_name, 'Name': name, 'Image': image, 'Command': command, 'Hostname': hostname, 'Replicas': replicas, 'Target_Port': target_port, 'Published_Port': published_port})
     return d
 
 
-#service_create(image='ubuntu',name='python-test',command=None,hostname='testcont',replicas=5,target_port=80,published_port=80)
