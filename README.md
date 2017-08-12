@@ -69,13 +69,14 @@ Worker/ManagerIP:
 
 ##### docker_util.leave_swarm(force=True/False)
 
-
-
-
-
-
-
-
+```bash
+root@Salt-Master:~# salt 'instan*' docker_util.leave_swarm force=True
+instance-1-minion.c.optimum-tensor-161912.internal:
+    |_
+      ----------
+      Comment:
+          instance-1-minion.c.optimum-tensor-161912.internal has left the swarm
+```
 
 
 ## Docker Services Salt Module
