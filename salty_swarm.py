@@ -10,8 +10,7 @@ server_name = __grains__['id']
 
 '''
 Initalize Docker on Minion as a Swarm Manager
-* Does not work on Windows OS at the moment
-`salt <Target> advertise_addr='ens4' listen_addr='0.0.0.0:5000' force_new_cluster=False`
+salt <Target> advertise_addr='ens4' listen_addr='0.0.0.0:5000' force_new_cluster=False
 '''
 
 
@@ -31,7 +30,7 @@ def swarm_init(advertise_addr=str,listen_addr=int, force_new_cluster=bool ):
 '''
 Join a Swarm Worker to the cluster
 *NOTE this can be use for worker or manager join
- `salt <target> 10.1.0.1 0.0.0.0 token ``
+salt <target> 10.1.0.1 0.0.0.0 token
 '''
 
 
