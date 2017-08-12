@@ -49,7 +49,7 @@ salt minion docker_util.swarm_init advertise_addr='ens4' listen_addr='0.0.0.0' f
 **Note** You have to pass in the token
 
 
-```
+```bash
 salt minion docker_util.joinswarm 10.1.0.2 0.0.0.0 SWMTKN-1-1yv40emizau5b1hy2x3boj3vcsy7edoldjxooif13kx9jpv97e-ec78dxpr06sfhplqr05nncihn
 ```
 
