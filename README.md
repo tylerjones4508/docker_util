@@ -60,11 +60,11 @@ Worker/ManagerIP:
    10.1.0.3
 ```
 
-## Docker Services Salt Module
+# Docker Services Salt Module
 
-### Create a service for Docker Swarm
 
-### docker_util.joinswarm
+
+## docker_util.service_create
 
 
 
