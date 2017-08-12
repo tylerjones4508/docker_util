@@ -11,12 +11,12 @@ client = docker.from_env()
 
 
 
-def service_create(image,name=str):
+def service_create(image=str,name=str,command=str):
     d = []
-    client.services.create(name,image)
-    echoback = server_name + ' has a docker service running named ' + name 
+    client.services.create(name=name, image=image, command=command)
+    echoback = server_name + ' has a docker service running named ' + name
     d.append({'Info': echoback, 'Name': name, 'Image': image})
     print d
-    
 
-service_create('httpd',name='test')
+
+service_create(image='ubuntu',name='python-test',command='tail -f /dev/null')
