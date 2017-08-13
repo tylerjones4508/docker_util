@@ -14,7 +14,9 @@ salt <Target> advertise_addr='ens4' listen_addr='0.0.0.0:5000' force_new_cluster
 '''
 
 
-def swarm_init(advertise_addr=str,listen_addr=int, force_new_cluster=bool ):
+def swarm_init(advertise_addr=str,
+               listen_addr=int,
+               force_new_cluster=bool ):
     d = []
     client.swarm.init(advertise_addr, listen_addr,force_new_cluster)
     output =  'Docker swarm has been Initalized on '+   server_name  + ' and the worker/manager Join token is below'
@@ -34,7 +36,9 @@ salt <target> 10.1.0.1 0.0.0.0 token
 '''
 
 
-def joinswarm(remote_addr, listen_addr, token):
+def joinswarm(remote_addr,
+              listen_addr,
+              token):
     d = []
     client.swarm.join(remote_addrs=[remote_addr], listen_addr=listen_addr, join_token=token )
     output =  server_name + ' has joined the Swarm'

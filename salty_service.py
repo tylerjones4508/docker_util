@@ -11,7 +11,13 @@ client = docker.from_env()
 
 
 
-def service_create(image=str,name=str,command=str,hostname=str,replicas=int,target_port=int,published_port=int):
+def service_create(image=str,
+                   name=str,
+                   command=str,
+                   hostname=str,
+                   replicas=int,
+                   target_port=int,
+                   published_port=int):
     d = []
     replica_mode = docker.types.ServiceMode('replicated', replicas=replicas)
     ports = docker.types.EndpointSpec(ports={ target_port: published_port })
@@ -19,5 +25,3 @@ def service_create(image=str,name=str,command=str,hostname=str,replicas=int,targ
     echoback = server_name + ' has a Docker Swarm Service running named ' + name
     d.append({'Info': echoback, 'Minion': server_name, 'Name': name, 'Image': image, 'Command': command, 'Hostname': hostname, 'Replicas': replicas, 'Target_Port': target_port, 'Published_Port': published_port})
     return d
-
-
