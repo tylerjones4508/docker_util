@@ -158,4 +158,4 @@ CONTAINER ID        IMAGE               COMMAND              CREATED            
 
 ## Additional Notes
 
-It is very possible to manage a docker swarm cluster across cloud providers such as Amazon AWS and Google Cloud. You will need to open the correct ports on the cloud provider.
+It is very possible to manage a Docker swarm cluster via SaltStack across cloud providers such as Amazon AWS and Google Cloud. You will need to open the correct ports on the cloud provider.
