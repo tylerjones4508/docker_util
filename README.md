@@ -146,9 +146,14 @@ uosngu752xbr        Test_Service.5      httpd               tjones-master       
 ```
 
 ```bash
-root@tjones-master:~# docker ps
+root@Salt-Master:~# docker ps
 CONTAINER ID        IMAGE               COMMAND              CREATED             STATUS              PORTS               NAMES
 156411caab98        httpd:latest        "httpd-foreground"   10 minutes ago      Up 10 minutes       80/tcp              Test_Service.3.qcp36x0mqumqiwnbvp7h99cdb
 74832f18084e        httpd:latest        "httpd-foreground"   10 minutes ago      Up 10 minutes       80/tcp              Test_Service.5.uosngu752xbr6ps1e4rhnozrr
 48831a88a89c        httpd:latest        "httpd-foreground"   10 minutes ago      Up 10 minutes       80/tcp              Test_Service.1.pb4g28xmr4z5m8ag3smg812ib
 ```
+
+
+## Additional Notes
+
+It is very possible to manage a docker swarm cluster across cloud providers such as Amazon AWS and Google Cloud. You will need to open the correct ports on the cloud provider.
