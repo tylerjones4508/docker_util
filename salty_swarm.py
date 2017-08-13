@@ -8,15 +8,14 @@ __grains__ = salt.loader.grains(__opts__)
 client = docker.from_env()
 server_name = __grains__['id']
 
-'''
-Initalize Docker on Minion as a Swarm Manager
-salt <Target> advertise_addr='ens4' listen_addr='0.0.0.0:5000' force_new_cluster=False
-'''
-
 
 def swarm_init(advertise_addr=str,
                listen_addr=int,
                force_new_cluster=bool ):
+    '''
+    Initalize Docker on Minion as a Swarm Manager
+    salt <Target> advertise_addr='ens4' listen_addr='0.0.0.0:5000' force_new_cluster=False
+    '''
     d = []
     client.swarm.init(advertise_addr, listen_addr,force_new_cluster)
     output =  'Docker swarm has been Initalized on '+   server_name  + ' and the worker/manager Join token is below'
@@ -29,27 +28,29 @@ def swarm_init(advertise_addr=str,
     d.append({'Comment': output, 'Worker_Token': key, 'Manger_Token': key_2 })
     return d
 
-'''
-Join a Swarm Worker to the cluster
-*NOTE this can be use for worker or manager join
-salt <target> 10.1.0.1 0.0.0.0 token
-'''
+
 
 
 def joinswarm(remote_addr,
               listen_addr,
               token):
+    '''
+    Join a Swarm Worker to the cluster
+    *NOTE this can be use for worker or manager join
+    salt <target> 10.1.0.1 0.0.0.0 token
+    '''
     d = []
     client.swarm.join(remote_addrs=[remote_addr], listen_addr=listen_addr, join_token=token )
     output =  server_name + ' has joined the Swarm'
     d.append({'Comment': output, 'Worker/ManagerIP': remote_addr })
     return d
 
-'''
-Will force the minion to leave the swarm
-'''
+
 
 def leave_swarm(force=bool):
+    '''
+    Will force the minion to leave the swarm
+    '''
     d = []
     client.swarm.leave(force=force)
     output = server_name + ' has left the swarm'
