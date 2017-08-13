@@ -11,7 +11,7 @@ server_name = __grains__['id']
 
 def swarm_init(advertise_addr=str,
                listen_addr=int,
-               force_new_cluster=bool ):
+               force_new_cluster=bool):
     '''
     Initalize Docker on Minion as a Swarm Manager
     salt <Target> advertise_addr='ens4' listen_addr='0.0.0.0:5000' force_new_cluster=False
@@ -31,9 +31,9 @@ def swarm_init(advertise_addr=str,
 
 
 
-def joinswarm(remote_addr,
-              listen_addr,
-              token):
+def joinswarm(remote_addr=int,
+              listen_addr=int,
+              token=str):
     '''
     Join a Swarm Worker to the cluster
     *NOTE this can be use for worker or manager join
