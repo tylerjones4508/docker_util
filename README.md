@@ -145,6 +145,8 @@ uosngu752xbr        Test_Service.5      httpd               tjones-master       
 0kzzadygz4mh        Test_Service.6      httpd               instance-1-minion   Running             Running 8 minutes ago
 ```
 
+Here is the output for ``docker ps ``.
+
 ```bash
 root@Salt-Master:~# docker ps
 CONTAINER ID        IMAGE               COMMAND              CREATED             STATUS              PORTS               NAMES
