@@ -36,9 +36,6 @@ def swarm_init(advertise_addr=str,
               'Manger_Token': key_2 })
     return d
 
-
-
-
 def joinswarm(remote_addr=int,
               listen_addr=int,
               token=str):
@@ -105,7 +102,7 @@ def list_swarm_services():
                               shell=True,
                               stdout=subprocess.PIPE)
     output  = runner.communicate()[0]
-    d.append({'Minion': server_name,'Return_Data': output})
+    d.append({'Minion': server_name,'Docker Services': output})
     return d
 
 
@@ -117,3 +114,4 @@ def ps_docker_service(service_name=str):
                               stdout=subprocess.PIPE)
     output  = runner.communicate()[0]
     d.append({'Minion': server_name,'Return_Data': output})
+    return d
