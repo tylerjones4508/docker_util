@@ -113,5 +113,6 @@ def ps_docker_service(service_name=str):
                               shell=True,
                               stdout=subprocess.PIPE)
     output  = runner.communicate()[0]
-    d.append({'Minion': server_name,'Docker Service PS': output})
+    return_name = 'Docker Service PS ' + server_name
+    d.append({'Minion': server_name, return_name: output})
     return d
