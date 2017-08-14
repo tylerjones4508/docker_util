@@ -96,3 +96,24 @@ def service_create(image=str,
               'Target_Port': target_port,
               'Published_Port': published_port})
     return d
+
+
+def list_swarm_services():
+    d = []
+    command = 'docker service ls'
+    runner = subprocess.Popen(command,
+                              shell=True,
+                              stdout=subprocess.PIPE)
+    output  = runner.communicate()[0]
+    d.append({'Minion': server_name,'Return_Data': output})
+    return d
+
+
+def ps_docker_service(service_name=str):
+    d = []
+    command = 'docker service ps ' + service_name
+    runner = subprocess.Popen(command,
+                              shell=True,
+                              stdout=subprocess.PIPE)
+    output  = runner.communicate()[0]
+    d.append({'Minion': server_name,'Return_Data': output})
