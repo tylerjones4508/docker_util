@@ -16,7 +16,7 @@ def swarm_init(advertise_addr=str,
     Initalize Docker on Minion as a Swarm Manager
     salt <Target> advertise_addr='ens4' listen_addr='0.0.0.0:5000' force_new_cluster=False
     '''
-    d = []
+    d = {}
     client.swarm.init(advertise_addr,
                       listen_addr,
                       force_new_cluster)
@@ -31,7 +31,7 @@ def swarm_init(advertise_addr=str,
                                      shell=True,
                                      stdout=subprocess.PIPE)
     key_2 = manager_token.communicate()[0]
-    d.append({'Comment': output,
+    d.update({'Comment': output,
               'Worker_Token': key,
               'Manger_Token': key_2 })
     return d
@@ -44,12 +44,12 @@ def joinswarm(remote_addr=int,
     *NOTE this can be use for worker or manager join
     salt <target> 10.1.0.1 0.0.0.0 token
     '''
-    d = []
+    d = {}
     client.swarm.join(remote_addrs=[remote_addr],
                       listen_addr=listen_addr,
                       join_token=token )
     output =  server_name + ' has joined the Swarm'
-    d.append({'Comment': output,
+    d.update({'Comment': output,
               'Worker/ManagerIP': remote_addr })
     return d
 
@@ -59,10 +59,10 @@ def leave_swarm(force=bool):
     '''
     Will force the minion to leave the swarm
     '''
-    d = []
+    d = {}
     client.swarm.leave(force=force)
     output = server_name + ' has left the swarm'
-    d.append({'Comment': output})
+    d.update({'Comment': output})
     return d
 
 
@@ -74,7 +74,7 @@ def service_create(image=str,
                    replicas=int,
                    target_port=int,
                    published_port=int):
-    d = []
+    d = {}
     replica_mode = docker.types.ServiceMode('replicated', replicas=replicas)
     ports = docker.types.EndpointSpec(ports={ target_port: published_port })
     client.services.create(name=name,
@@ -83,7 +83,7 @@ def service_create(image=str,
                            mode=replica_mode,
                            endpoint_spec=ports)
     echoback = server_name + ' has a Docker Swarm Service running named ' + name
-    d.append({'Info': echoback,
+    d.update({'Info': echoback,
               'Minion': server_name,
               'Name': name,
               'Image': image,
@@ -96,23 +96,34 @@ def service_create(image=str,
 
 
 def list_swarm_services():
-    d = []
+    d = {}
     command = 'docker service ls'
     runner = subprocess.Popen(command,
                               shell=True,
                               stdout=subprocess.PIPE)
     output  = runner.communicate()[0]
-    d.append({'Minion': server_name,'Docker Services': output})
+    d.update({'Minion': server_name,'Docker Services': output})
     return d
 
 
 def ps_docker_service(service_name=str):
-    d = []
+    d = {}
     command = 'docker service ps ' + service_name
     runner = subprocess.Popen(command,
                               shell=True,
                               stdout=subprocess.PIPE)
     output  = runner.communicate()[0]
     return_name = 'Docker Service PS ' + service_name
-    d.append({'Minion': server_name, return_name: output})
+    d.update({'Minion': server_name, return_name: output})
     return d
+
+
+def node_ls():
+    d = {}
+    command = 'docker node ls'
+    runner = subprocess.Popen(command,
+                              shell=True,
+                              stdout=subprocess.PIPE)
+    output = runner.communicate()[0]
+    d.update({'Minion': server_name, 'Docker Node ls': output})
+    return d 
