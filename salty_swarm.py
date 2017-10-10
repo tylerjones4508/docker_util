@@ -1,4 +1,5 @@
 import docker
+import json
 import os
 import subprocess
 import salt.config
@@ -126,4 +127,42 @@ def node_ls():
                               stdout=subprocess.PIPE)
     output = runner.communicate()[0]
     d.update({'Minion': server_name, 'Docker Node ls': output})
-    return d 
+    return d
+
+
+
+def swarm_service_info(service_name=str):
+    client = docker.APIClient(base_url='unix://var/run/docker.sock')
+    d = {}
+    out = client.inspect_service(service=service_name)
+    here = json.dumps(out)
+    dump = json.loads(here)
+    name = dump['Spec']['Name']
+    network_mode = dump['Spec']['EndpointSpec']['Mode']
+    ports = dump['Spec']['EndpointSpec']['Ports']
+    swarm_id = dump['ID']
+    create_date = dump['CreatedAt']
+    update_date = dump['UpdatedAt']
+    labels = dump['Spec']['Labels']
+    replicas =  dump['Spec']['Mode']['Replicated']['Replicas']
+    network = dump['Endpoint']['VirtualIPs']
+    image = dump['Spec']['TaskTemplate']['ContainerSpec']['Image']
+    for items in ports:
+        published_port = items['PublishedPort']
+        target_port = items['TargetPort']
+        published_mode = items['PublishMode']
+        protocol = items['Protocol']
+        d.update({'Service Name': name,
+                  'Replicas': replicas,
+                  'Service ID': swarm_id,
+                  'Network': network,
+                  'Network Mode': network_mode,
+                  'Creation Date': create_date,
+                  'Update Date': update_date,
+                  'Published Port': published_port,
+                  'Target Port': target_port,
+                  'Published Mode': published_mode,
+                  'Protocol': protocol,
+                  'Docker Image': image})
+                   
+    return d     
