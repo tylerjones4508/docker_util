@@ -164,5 +164,4 @@ def swarm_service_info(service_name=str):
                   'Published Mode': published_mode,
                   'Protocol': protocol,
                   'Docker Image': image})
-                   
     return d     
