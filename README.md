@@ -1,4 +1,4 @@
-# Docker Util
+# Docker Utils
 
 [SaltStack](https://github.com/saltstack/salt) Version 2017.7.14
 
