@@ -35,6 +35,13 @@ https://docs.docker.com/engine/installation/linux/docker-ce
 
 ##### docker_util.swarm_init(advertise_addr=str,listen_addr=int, force_new_cluster=True/False )
 
+Arguments:
+
+**dvertise_addr** is the ip of the manager
+**listen_addr** Listen address used for inter-manager communication, as well as determining the networking interface used for the VXLAN Tunnel Endpoint (VTEP). This can either be an address/port combination in the form 192.168.1.1:4567, or an interface followed by a port number, like eth0:4567. If the port number is omitted, the default swarm listening port is used. Default: 0.0.0.0:2377
+**force_new_cluster** will force a new cluster if True is passed
+
+
 ```bash
 salt 'saltmaster' docker_util.swarm_init advertise_addr='192.168.50.10' listen_addr='0.0.0.0' force_new_cluster=False
 ```
@@ -80,8 +87,9 @@ saltmaster:
 
 ##### docker_util.joinswarm(remote_addr=int,listen_addr=int,token=str)
 
-**Note** You have to pass in the token
-
+**remote_addr** is the manager node you want the worker to connect to.
+**listen_addr**  Listen address used for inter-manager communication if the node gets promoted to manager, as well as determining the networking interface used for the VXLAN Tunnel Endpoint (VTEP)
+**token** is either the manager join token or the worker join token 
 
 ```bash
 salt 'minion1' docker_util.joinswarm remote_addr=192.168.50.10 listen_addr='0.0.0.0' token='SWMTKN-1-64tux2g0701r84ofq93zppcih0pe081akq45owe9ts61f30x4t-06trjugdu7x2z47j938s54il'
@@ -338,4 +346,52 @@ saltmaster:
 
 Arguments: 
 
-*availability* is either a manager or worker
+**Note Needs to target a manager node**
+**availability** is either active or drain
+**node_name** is the minion id
+**role** is the role of manager or worker
+**node_id** is the Id and that can be obtained via `docker_util.node_ls`
+**version** is obtained by `docker_util.node_ls`, also if you change a node using `docker_util.update_node` the Version number will change each time.
+
+Here we are going to drain the node
+
+```bash
+salt 'saltmaster' docker_util.update_node availability=drain node_name=minion2 role=worker node_id=3k9x7t8m4pel9c0nqr3iajnzp version=19
+```
+
+**Return Data**
+
+```yaml
+saltmaster:
+    ----------
+    Node Information:
+        ----------
+        Availability:
+            drain
+        Name:
+            minion2
+        Role:
+            worker
+
+```
+
+Here we are going to promote minion2 to a manager and undrain it.
+
+```bash
+salt 'saltmaster' docker_util.update_node availability=active node_name=minion2 role=manager node_id=3k9x7t8m4pel9c0nqr3iajnzp version=22
+```
+**Return Data**
+
+```yaml
+saltmaster:
+    ----------
+    Node Information:
+        ----------
+        Availability:
+            active
+        Name:
+            minion2
+        Role:
+            manager
+
+```
