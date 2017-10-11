@@ -57,7 +57,7 @@ saltmaster:
 
 ### Display Join Tokens on swarm manager (docker_util.swarm_tokens)
 
-#### docker_util.swarm_tokens
+#### docker_util.swarm_tokens()
 
 ```bash
 salt 'saltmaster' docker_util.swarm_tokens
@@ -311,3 +311,31 @@ saltmaster:
         9
 
 ```
+
+**Note on `docker_util.node_ls` The Version and ID output is needed for the next part of the module for `docker_util.remove_node` and `docker_util.update_node`.**
+
+
+### Remove Node from Swarm
+
+##### docker_util.remove_node(node_id=str, force=bool)
+
+***Target a manager and removes a node(server) from docker swarm, you can force it but its good to do it gracefully with docker_util.leave_swarm first then run this module.***
+
+```bash
+salt 'saltmaster' docker_util.remove_node node_id=z4gjbe9rwmqahc2a91snvolm5 force=false
+```
+
+**Return Data**
+
+```yaml
+saltmaster:
+    True
+```
+
+### Update a node in a Swarm
+
+##### docker_util.update_node(availability=str, node_name=str, role=str, node_id=str, version=int)
+
+Arguments: 
+
+*availability* is either a manager or worker
