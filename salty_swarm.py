@@ -153,41 +153,53 @@ def swarm_service_info(service_name=str):
                       'Minion Id': server_name})
         return d
     except:
-        d.update({'Error': 'service_name is missing'})
+        d.update({'Error': 'service_name arg is missing?'})
         return d
 
 
 def remove_service(service=str):
-    client = docker.APIClient(base_url='unix://var/run/docker.sock')
     d = {}
-    service = client.remove_service(service)
-    d.update({'Service Deleted':service,
-              'Minion ID': server_name })
-    return d    
+    try:
+        client = docker.APIClient(base_url='unix://var/run/docker.sock')
+        service = client.remove_service(service)
+        d.update({'Service Deleted':service,
+                  'Minion ID': server_name })
+        return d
+    except:
+        d.update({'Error': 'service arg is missing?'})
+        return d
+
+
 
 
 def node_ls(server=str):
     d = {}
-    client = docker.APIClient(base_url='unix://var/run/docker.sock')
-    service = client.nodes(filters=({'name': server }))
-    getdata = json.dumps(service)
-    dump = json.loads(getdata)
-    for items in dump:
-        docker_version = items['Description']['Engine']['EngineVersion']
-        platform = items['Description']['Platform']
-        hostnames = items['Description']['Hostname']
-        ids = items['ID']
-        role = items['Spec']['Role']
-        availability = items['Spec']['Availability'] 
-        status =  items['Status']
-        d.update({'Docker Version': docker_version,
-             'Platform': platform,
-             'Hostname': hostnames,
-             'ID': ids,
-             'Roles': role,
-             'Availability': availability,
-             'Status': status})
+    try:
+        client = docker.APIClient(base_url='unix://var/run/docker.sock')
+        service = client.nodes(filters=({'name': server }))
+        getdata = json.dumps(service)
+        dump = json.loads(getdata)
+        for items in dump:
+            docker_version = items['Description']['Engine']['EngineVersion']
+            platform = items['Description']['Platform']
+            hostnames = items['Description']['Hostname']
+            ids = items['ID']
+            role = items['Spec']['Role']
+            availability = items['Spec']['Availability'] 
+            status =  items['Status']
+            d.update({'Docker Version': docker_version,
+                      'Platform': platform,
+                      'Hostname': hostnames,
+                      'ID': ids,
+                      'Roles': role,
+                      'Availability': availability,
+                      'Status': status})
+            return d
+    except:
+        d.update({'Error': 'The server arg is missing?'})
         return d
+
+
     
 
     
