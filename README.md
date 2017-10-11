@@ -31,7 +31,7 @@ https://docs.docker.com/engine/installation/linux/docker-ce
 
 ## Docker Swarm Salt Module
 
-### The following will create a Docker Swarm Manager
+### The following will create a Docker Swarm Manager (docker_util.swarm_init)
 
 ##### docker_util.swarm_init(advertise_addr=str,listen_addr=int, force_new_cluster=True/False )
 
@@ -55,7 +55,7 @@ saltmaster:
 ```
 
 
-### Show Join Tokens on swarm manager
+### Display Join Tokens on swarm manager (docker_util.swarm_tokens)
 
 #### docker_util.swarm_tokens
 
@@ -74,7 +74,7 @@ saltmaster:
         SWMTKN-1-64tux2g0701r84ofq93zppcih0pe081akq45owe9ts61f30x4t-9b7lviz7pj17jd1bk0k54dehc
 ```
 
-### The following will join a minion or master to a Docker Swarm
+### The following will join a minion or master to a Docker Swarm (docker_util.joinswarm)
 
 **Join a Swarm as a worker or manager.**
 
@@ -97,5 +97,7 @@ minion1:
     Manager_Addr:
         192.168.50.10
 ```
+
+
 
 
