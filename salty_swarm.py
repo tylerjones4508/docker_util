@@ -187,13 +187,15 @@ def node_ls(server=str):
             role = items['Spec']['Role']
             availability = items['Spec']['Availability'] 
             status =  items['Status']
+            Version = items['Version']['Index']
             d.update({'Docker Version': docker_version,
                       'Platform': platform,
                       'Hostname': hostnames,
                       'ID': ids,
                       'Roles': role,
                       'Availability': availability,
-                      'Status': status})
+                      'Status': status,
+                      'Version': Version})
             return d
     except:
         d.update({'Error': 'The server arg is missing or you not targeting a Manager node?'})
@@ -214,10 +216,13 @@ def remove_node(node_id=str, force=bool):
         d.update({'Error': 'Is the node_id and/or force=True/False missing?'})
 
 
+def update_noden(availability=str,node_name=str,role=str):
+    client = docker.APIClient(base_url='unix://var/run/docker.sock')
+    node_spec = {'Availability': availability,
+                 'Name': node_name,
+                 'Role': role}
 
-
-
-
+                 
     
-
+    
     
