@@ -101,17 +101,6 @@ def service_create(image=str,
         return d
 
 
-def list_swarm_services():
-    d = {}
-    command = 'docker service ls'
-    runner = subprocess.Popen(command,
-                              shell=True,
-                              stdout=subprocess.PIPE)
-    output  = runner.communicate()[0]
-    d.update({'Minion': server_name,'Docker Services': output})
-    return d
-
-
 def swarm_service_info(service_name=str):
     d = {}
     try:

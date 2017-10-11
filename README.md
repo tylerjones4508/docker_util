@@ -161,3 +161,153 @@ ID                  NAME                MODE                REPLICAS            
 3sgiwf8wzcsc        Test_Service        replicated          6/6                 httpd               *:80->80/tcp
 ```
 
+
+### Swarm Service Information (docker_util.swarm_service_info)
+
+##### docker_util.swarm_service_info(service_name=str)
+
+***Shows information about a Swarm Service. Note: Needs to target a Docker Swarm Manager***
+
+```bash
+salt saltmaster docker_util.swarm_service_info service_name=Test_Service
+```
+
+**Return Data**
+
+```yaml
+saltmaster:
+    ----------
+    Creation Date:
+        2017-10-11T22:58:56.904144684Z
+    Docker Image:
+        httpd
+    Minion Id:
+        saltmaster
+    Network:
+        |_
+          ----------
+          Addr:
+              10.255.0.6/16
+          NetworkID:
+              lb1hy71qt33jz2cgxghurjbeu
+    Network Mode:
+        vip
+    Protocol:
+        tcp
+    Published Mode:
+        ingress
+    Published Port:
+        80
+    Replicas:
+        6
+    Service ID:
+        3sgiwf8wzcscu3kp9jhc8np88
+    Service Name:
+        Test_Service
+    Target Port:
+        80
+    Update Date:
+        2017-10-11T22:58:56.908098582Z
+    Version:
+        29
+
+```
+
+### Remove Docker Service (docker_util.remove_service)
+
+##### docker_util.remove_service(service=str)
+
+***Removes a Service from a Swarm, Note: Needs to target a Manger node***
+
+```bash
+salt 'saltmaster' docker_util.remove_service service=Test_Service
+```
+**Return Data**
+
+```yaml
+saltmaster:
+    ----------
+    Minion ID:
+        saltmaster
+    Service Deleted:
+        True
+
+```
+
+### Show information about a docker swarm node (docker_util.node_ls)
+
+#### docker_util.node_ls(server=str)
+
+***Displays information on a docker node. Similar to `docker node ls` NOTE: needs to target a manager node***
+
+```bash
+salt 'saltmaster' docker_util.node_ls server=minion1
+```
+
+**Return Data**
+
+```yaml
+saltmaster:
+    ----------
+    Availability:
+        active
+    Docker Version:
+        17.09.0-ce
+    Hostname:
+        minion1
+    ID:
+        shze0yxodkpq2cw1i8jze6r1a
+    Platform:
+        ----------
+        Architecture:
+            x86_64
+        OS:
+            linux
+    Roles:
+        manager
+    Status:
+        ----------
+        Addr:
+            192.168.50.11
+        State:
+            ready
+    Version:
+        16
+
+```
+
+```bash
+salt 'saltmaster' docker_util.node_ls server=saltmaster
+```
+
+**Return Data**
+
+```yaml
+saltmaster:
+    ----------
+    Availability:
+        active
+    Docker Version:
+        17.09.0-ce
+    Hostname:
+        saltmaster
+    ID:
+        n4hd2xdt5z2abhox5cp611cno
+    Platform:
+        ----------
+        Architecture:
+            x86_64
+        OS:
+            linux
+    Roles:
+        manager
+    Status:
+        ----------
+        Addr:
+            192.168.50.10
+        State:
+            ready
+    Version:
+        9
+
+```
