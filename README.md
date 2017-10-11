@@ -100,6 +100,8 @@ minion1:
 
 ### Leave Swarm (docker_util.leave_swarm)
 
+##### docker_util.leave_swarm(force=bool)
+
 **Leave a Swarm**
 
 ```bash
@@ -114,5 +116,12 @@ minion2:
     Comment:
         minion2 has left the swarm
 ```
+
+### Create a Docker Swarm Service (docker_util.service_create)
+
+##### docker_util.service_create(image=str,name=str,command=str,hostname=str,replicas=int,target_port=int,published_port=int) 
+
+*** Create Docker Swarm service ***
+
 
 
