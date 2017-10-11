@@ -121,7 +121,43 @@ minion2:
 
 ##### docker_util.service_create(image=str,name=str,command=str,hostname=str,replicas=int,target_port=int,published_port=int) 
 
-*** Create Docker Swarm service ***
+***Create Docker Swarm service Note: Needs to be targeted on a Manager***
 
 
+```bash
+salt 'saltmaster' docker_util.service_create image=httpd name=Test_Service command=None hostname=salthttpd replicas=6 target_port=80 published_port=80
+```
+**Return Data**
+
+```yaml
+saltmaster:
+    ----------
+    Command:
+        None
+    Hostname:
+        salthttpd
+    Image:
+        httpd
+    Info:
+        saltmaster has a Docker Swarm Service running named Test_Service
+    Minion:
+        saltmaster
+    Name:
+        Test_Service
+    Published_Port:
+        80
+    Replicas:
+        6
+    Target_Port:
+        80
+
+```
+
+**Output of docker service ls**
+
+```bash
+root@saltmaster:~# docker service ls
+ID                  NAME                MODE                REPLICAS            IMAGE               PORTS
+3sgiwf8wzcsc        Test_Service        replicated          6/6                 httpd               *:80->80/tcp
+```
 
