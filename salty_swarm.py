@@ -55,7 +55,7 @@ def joinswarm(remote_addr=int,
                   'Manager_Addr': remote_addr })
         return d
     except:
-        d.update({'Error': 'Please make sure your passing remote_addr, listen_addr and token correctly.'})
+        d.update({'Error': 'Please make sure this minion is not part of a swarm and your passing remote_addr, listen_addr and token correctly.'})
         return d
         
     
@@ -196,8 +196,26 @@ def node_ls(server=str):
                       'Status': status})
             return d
     except:
-        d.update({'Error': 'The server arg is missing?'})
+        d.update({'Error': 'The server arg is missing or you not targeting a Manager node?'})
         return d
+
+
+def remove_node(node_id=str, force=bool):
+    client = docker.APIClient(base_url='unix://var/run/docker.sock')
+    d = {}
+    try:
+        if force == 'True':
+            service = client.remove_node(node_id,force=True) 
+            return service
+        else:
+            service = client.remove_node(node_id,force=False)
+            return service
+    except:
+        d.update({'Error': 'Is the node_id and/or force=True/False missing?'})
+
+
+
+
 
 
     
