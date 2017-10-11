@@ -54,6 +54,26 @@ saltmaster:
             SWMTKN-1-64tux2g0701r84ofq93zppcih0pe081akq45owe9ts61f30x4t-9b7lviz7pj17jd1bk0k54dehc
 ```
 
+
+### Show Join Tokens on swarm manager
+
+#### docker_util.swarm_tokens
+
+```bash
+salt 'saltmaster' docker_util.swarm_tokens
+```
+
+**Return Data**
+
+```yaml
+saltmaster:
+    ----------
+    Manager:
+        SWMTKN-1-64tux2g0701r84ofq93zppcih0pe081akq45owe9ts61f30x4t-06trjugdu7x2z47j938s54ilh
+    Worker:
+        SWMTKN-1-64tux2g0701r84ofq93zppcih0pe081akq45owe9ts61f30x4t-9b7lviz7pj17jd1bk0k54dehc
+```
+
 ### The following will join a minion or master to a Docker Swarm
 
 **Join a Swarm as a worker or manager.**
@@ -64,7 +84,7 @@ saltmaster:
 
 
 ```bash
-salt minion1 docker_util.joinswarm remote_addr=192.168.50.10 listen_addr='0.0.0.0' token='SWMTKN-1-64tux2g0701r84ofq93zppcih0pe081akq45owe9ts61f30x4t-06trjugdu7x2z47j938s54il'
+salt 'minion1' docker_util.joinswarm remote_addr=192.168.50.10 listen_addr='0.0.0.0' token='SWMTKN-1-64tux2g0701r84ofq93zppcih0pe081akq45owe9ts61f30x4t-06trjugdu7x2z47j938s54il'
 ```
 
 **Return Data**
@@ -77,3 +97,5 @@ minion1:
     Manager_Addr:
         192.168.50.10
 ```
+
+
