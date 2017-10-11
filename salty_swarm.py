@@ -170,8 +170,6 @@ def remove_service(service=str):
         return d
 
 
-
-
 def node_ls(server=str):
     d = {}
     try:
@@ -216,13 +214,29 @@ def remove_node(node_id=str, force=bool):
         d.update({'Error': 'Is the node_id and/or force=True/False missing?'})
 
 
-def update_noden(availability=str,node_name=str,role=str):
+def update_node(availability=str,
+                node_name=str,
+                role=str,
+                node_id=str,
+                version=int):
     client = docker.APIClient(base_url='unix://var/run/docker.sock')
-    node_spec = {'Availability': availability,
-                 'Name': node_name,
-                 'Role': role}
-
+    d = {}
+    try:
+        node_spec = {'Availability': availability,
+                     'Name': node_name,
+                     'Role': role}
+        client.update_node(node_id=node_id, 
+                           version=version,
+                           node_spec=node_spec)
+        d.update({'Node Information': node_spec,})
+        return d
+    except:
+        d.update({'Error': 'Make sure all args are passed [availability, node_name, role, node_id, version]'})
+        return d
                  
+    
+    
+
     
     
     
