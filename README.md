@@ -98,6 +98,21 @@ minion1:
         192.168.50.10
 ```
 
+### Leave Swarm (docker_util.leave_swarm)
 
+**Leave a Swarm**
+
+```bash
+salt 'minion2' docker_util.leave_swarm force=False
+```
+
+**Return Data**
+
+```yaml
+minion2:
+    ----------
+    Comment:
+        minion2 has left the swarm
+```
 
 
