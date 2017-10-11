@@ -67,3 +67,13 @@ saltmaster:
 salt minion1 docker_util.joinswarm remote_addr=192.168.50.10 listen_addr='0.0.0.0' token='SWMTKN-1-64tux2g0701r84ofq93zppcih0pe081akq45owe9ts61f30x4t-06trjugdu7x2z47j938s54il'
 ```
 
+**Return Data**
+
+```yaml
+minion1:
+    ----------
+    Comment:
+        minion1 has joined the Swarm
+    Manager_Addr:
+        192.168.50.10
+```
