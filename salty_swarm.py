@@ -36,7 +36,6 @@ def swarm_init(advertise_addr=str,
         return d
 
 
-
 def joinswarm(remote_addr=int,
               listen_addr=int,
               token=str):
@@ -59,8 +58,6 @@ def joinswarm(remote_addr=int,
         return d
         
     
-
-
 def leave_swarm(force=bool):
     '''
     Will force the minion to leave the swarm
@@ -104,7 +101,6 @@ def service_create(image=str,
         return d
 
 
-
 def list_swarm_services():
     d = {}
     command = 'docker service ls'
@@ -123,6 +119,7 @@ def swarm_service_info(service_name=str):
         service = client.inspect_service(service=service_name)
         getdata = json.dumps(service)
         dump = json.loads(getdata)
+        version = dump['Version']['Index']
         name = dump['Spec']['Name']
         network_mode = dump['Spec']['EndpointSpec']['Mode']
         ports = dump['Spec']['EndpointSpec']['Ports']
@@ -150,7 +147,8 @@ def swarm_service_info(service_name=str):
                       'Published Mode': published_mode,
                       'Protocol': protocol,
                       'Docker Image': image,
-                      'Minion Id': server_name})
+                      'Minion Id': server_name,
+                      'Version': version})
         return d
     except:
         d.update({'Error': 'service_name arg is missing?'})
@@ -233,10 +231,3 @@ def update_node(availability=str,
     except:
         d.update({'Error': 'Make sure all args are passed [availability, node_name, role, node_id, version]'})
         return d
-                 
-    
-    
-
-    
-    
-    
