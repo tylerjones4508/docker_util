@@ -1,6 +1,6 @@
 # Docker_Util
 
-[SaltStack](https://github.com/saltstack/salt) Version 2017.7.14
+[SaltStack](https://github.com/saltstack/salt) Version 2017.7.2
 
 The Docker Util module allows you to manage Docker swarm clusters via [SaltStack](https://github.com/saltstack/salt)
 
