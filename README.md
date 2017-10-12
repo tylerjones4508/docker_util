@@ -35,7 +35,7 @@ https://docs.docker.com/engine/installation/linux/docker-ce
 
 ##### docker_util.swarm_init(advertise_addr=str,listen_addr=int, force_new_cluster=True/False )
 
-**dvertise_addr** is the ip of the manager
+**advertise_addr** is the ip of the manager
 **listen_addr** Listen address used for inter-manager communication, as well as determining the networking interface used for the VXLAN Tunnel Endpoint (VTEP). This can either be an address/port combination in the form 192.168.1.1:4567, or an interface followed by a port number, like eth0:4567. If the port number is omitted, the default swarm listening port is used. Default: 0.0.0.0:2377
 **force_new_cluster** will force a new cluster if True is passed
 
