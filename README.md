@@ -35,8 +35,6 @@ https://docs.docker.com/engine/installation/linux/docker-ce
 
 ##### docker_util.swarm_init(advertise_addr=str,listen_addr=int, force_new_cluster=True/False )
 
-Arguments:
-
 **dvertise_addr** is the ip of the manager
 **listen_addr** Listen address used for inter-manager communication, as well as determining the networking interface used for the VXLAN Tunnel Endpoint (VTEP). This can either be an address/port combination in the form 192.168.1.1:4567, or an interface followed by a port number, like eth0:4567. If the port number is omitted, the default swarm listening port is used. Default: 0.0.0.0:2377
 **force_new_cluster** will force a new cluster if True is passed
@@ -128,6 +126,14 @@ minion2:
 ### Create a Docker Swarm Service (docker_util.service_create)
 
 ##### docker_util.service_create(image=str,name=str,command=str,hostname=str,replicas=int,target_port=int,published_port=int) 
+
+**image** is the Docker image
+**name** is the service name
+**command** the docker command to run in the container at launch
+**hostname** is the hostname of the containers
+**replicas** is how many instnaces you want running in your swarm
+**target_port** is the target port on the container
+**published_port** is the port thats published on the host/os.
 
 ***Create Docker Swarm service Note: Needs to be targeted on a Manager***
 
@@ -344,14 +350,12 @@ saltmaster:
 
 ##### docker_util.update_node(availability=str, node_name=str, role=str, node_id=str, version=int)
 
-Arguments: 
-
 **Note Needs to target a manager node**
 **availability** is either active or drain
 **node_name** is the minion id
 **role** is the role of manager or worker
 **node_id** is the Id and that can be obtained via `docker_util.node_ls`
-**version** is obtained by `docker_util.node_ls`, also if you change a node using `docker_util.update_node` the Version number will change each time.
+**version** is obtained by `docker_util.node_ls`, also if you change a node using `docker_util.update_node` the version number will change each time.
 
 Here we are going to drain the node
 
